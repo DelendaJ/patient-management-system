@@ -1,0 +1,34 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+
+<div *ngIf="patient">
+  <div>
+    <label>Name: </label> {{patient.name}}
+  </div>
+  <div>
+    <label>Age: </label> {{patient.age}}
+  </div>
+  <div>
+    <label>Address: </label> {{patient.address}}
+  </div>
+  <div>
+    <label>Phone Number: </label> {{patient.phoneNumber}}
+  </div>
+  <div>
+    <label>Social Security: </label> {{patient.socialSecurity}}
+  </div>
+
+  <div>
+    <label>Medication Name: </label> {{patient.medicationName}}
+  </div>
+
+  <div>
+    <label>Date Prescribed: </label> {{patient.datePrescribed}}
+  </div>
+
+  <button (click)="save()" class="btn btn-primary">Edit Patient Details</button>
+  <button (click)="list()" class="btn btn-primary">Back to Patient List</button><br>
+
+  <hr/>
+</div>
+

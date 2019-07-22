@@ -1,0 +1,41 @@
+
+<div class="card">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Patients</h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2">
+
+      </span>
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+        <th>Social Security</th>
+        <th>Details</th>
+        <th>Delete</th>
+
+      </tr>
+
+      <tbody>
+      <tr *ngFor="let patient of patients | async">
+        <td>{{patient.name}}</td>
+        <td>{{patient.age}}</td>
+        <td>{{patient.address}}</td>
+        <td>{{patient.phoneNumber}}</td>
+        <td>{{patient.socialSecurity}}</td>
+      <td> <button (click)="patientDetails(patient.id)" class="btn-rounded btn-lg btn btn-info" style="margin-left: 10px"></button>
+        <td> <button (click)="destroyPatient(patient.id)" class="my-0 btn btn-danger btn-rounded btn-lg" style="margin-left: 10px"></button>
+
+
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<app-footer></app-footer>
+
