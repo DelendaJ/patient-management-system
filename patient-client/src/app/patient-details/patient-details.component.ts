@@ -5,6 +5,7 @@ import {PatientListComponent} from "../patient-list/patient-list.component";
 import {Observable} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 
+
 @Component({
   selector: 'app-patient-details',
   templateUrl: './patient-details.component.html',
@@ -12,7 +13,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class PatientDetailsComponent implements OnInit {
   id: number;
-  patient: Patient = new Patient();
+  patient: Object = new Patient();
 
   constructor(private route: ActivatedRoute, private router: Router,
               private patientService: PatientService) {

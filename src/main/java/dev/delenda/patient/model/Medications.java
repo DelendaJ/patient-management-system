@@ -21,6 +21,7 @@ public class Medications {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
+
     private Long id;
     @Column(name = "medication_name")
     private String medicationName;
@@ -28,9 +29,8 @@ public class Medications {
     private String datePrescribed;
 
 
-    @ManyToOne (fetch = FetchType.LAZY)
-    @JoinColumn (name = "patient")
-   @JsonIgnore
+    @ManyToOne (fetch = FetchType.EAGER)
+    @JsonIgnore
     private Patients patient;
 
 }

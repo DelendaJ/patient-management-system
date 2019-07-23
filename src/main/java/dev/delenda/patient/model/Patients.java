@@ -1,7 +1,11 @@
 package dev.delenda.patient.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 
@@ -14,8 +18,7 @@ import java.util.Set;
 public class Patients {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+    @GeneratedValue//(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
@@ -31,13 +34,12 @@ public class Patients {
     private String socialSecurity;
 
 
+    //@OneToMany(cascade = {CascadeType.ALL})
     @OneToMany(cascade = {CascadeType.ALL})
+    @Fetch(FetchMode.JOIN)
+    @JoinColumn(name = "patients")
     private Set<Medications> medications;
 
-  public void addMedication(Medications meds) {
-      medications.add(meds);
-      meds.setPatient(this);
-  }
-}
 
+}
 

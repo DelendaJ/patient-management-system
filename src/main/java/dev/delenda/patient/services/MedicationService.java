@@ -5,7 +5,6 @@ import dev.delenda.patient.repositories.MedsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
 
 @Service
@@ -17,10 +16,6 @@ public class MedicationService {
     public MedicationService(MedsRepo medsRepo) {
         this.medsRepo = medsRepo;
 
-    }
-
-    public Optional<Medications> getAllPatientMeds(Long id) {
-        return medsRepo.findById(id);
     }
 
     public Medications newMeds(Medications meds) {

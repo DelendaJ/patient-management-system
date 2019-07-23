@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
 })
 export class PatientService {
   private baseURL = 'http://localhost:8080/api/patients';
-  private medsURL = this.baseURL + '/{id}/medications';
+
 
 
   constructor(private http: HttpClient) {
@@ -35,15 +35,15 @@ export class PatientService {
   }
 
   getPatientMeds(id: number) : Observable<Object> {
-    return this.http.get(`${this.medsURL}`);
+  return this.http.get(`${this.baseURL}/${id}/medications`);
   }
 
-  createPatientMeds (patient: Object): Observable<Object> {
-    return this.http.post(`${this.medsURL}`, patient);
+  createPatientMeds (patient: Object, id: number): Observable<Object> {
+    return this.http.post(`${this.baseURL}/${id}/medications`, patient);
   }
 
   destroyPatientMeds (id: number): Observable<any> {
-    return this.http.delete(`${this.medsURL}/${id}`, {responseType: "text"});
+    return this.http.delete(`${this.baseURL}/${id}/medications/{id}`, {responseType: "text"});
   }
 
 }

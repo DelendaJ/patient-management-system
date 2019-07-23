@@ -46,11 +46,7 @@ public class PatientService {
     }
 
     public Iterable<Medications> getPatientMeds(Long id) {
-        if (!patientRepo.findById(id).isPresent()) {
-            return null;
-        }
         return patientRepo.findById(id).get().getMedications();
     }
-
 
 }
