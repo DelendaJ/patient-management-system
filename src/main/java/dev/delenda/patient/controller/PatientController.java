@@ -2,6 +2,7 @@ package dev.delenda.patient.controller;
 import dev.delenda.patient.model.Medications;
 import dev.delenda.patient.model.Patients;
 import dev.delenda.patient.services.PatientService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,8 +11,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 @CrossOrigin("*")
 
+
 public class PatientController {
+    @Autowired
     private PatientService patientService;
+
 
     public PatientController(PatientService patientService) {
         this.patientService = patientService;
@@ -20,11 +24,6 @@ public class PatientController {
     @GetMapping("/patients")
     public ResponseEntity<Iterable<Patients>> getAllPatients() {
         return new ResponseEntity<>(patientService.getAllPatients(), HttpStatus.OK);
-    }
-
-    @GetMapping("/patients/{id}/medications")
-    public ResponseEntity<Iterable<Medications>> patientMeds(@PathVariable Long id, @RequestBody Medications medications) {
-        return new ResponseEntity<>(patientService.getPatientMeds(id), HttpStatus.OK);
     }
 
     @GetMapping("/patients/{id}")

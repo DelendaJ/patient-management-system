@@ -7,9 +7,13 @@ import dev.delenda.patient.repositories.PatientRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
+
 
 @Service
 public class PatientService {
+
     private PatientRepo patientRepo;
 
     @Autowired
@@ -20,6 +24,10 @@ public class PatientService {
     public Iterable<Patients> getAllPatients() {
         return patientRepo.findAll();
     }
+
+   // public Patients findByName(String name) {
+      //  return patientRepo.findByName(name).get();
+  //  }
 
     public Patients getPatient(Long id) {
         return patientRepo.findById(id).get();
@@ -45,8 +53,28 @@ public class PatientService {
         return true;
     }
 
-    public Iterable<Medications> getPatientMeds(Long id) {
+   // public Iterable<Medications> getPatientMeds(Long id) {
+      //  return patientRepo.findById(id).get().getMedications();
+    //}
+
+    public Iterable<Medications> getMedsByPatient(Long id) {
+        if (!patientRepo.findById(id).isPresent()) {
+            return null;
+        }
         return patientRepo.findById(id).get().getMedications();
     }
 
-}
+    /*public Patients addMedsToPatient(Long id, Medications meds) {
+        Optional<Patients> patient = patientRepo.findById(id);
+        patient.ifPresent(record -> {
+            record.addMedications(new Medications(meds));
+            patientRepo.save(record));
+            return record;
+        }*/
+
+
+
+    }
+
+
+
