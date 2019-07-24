@@ -8,10 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-
 
 @Data
 @NoArgsConstructor
@@ -42,6 +38,7 @@ public void setPatient(Patients pat) {
     if (!pat.getMedications().contains(this)) {
         pat.getMedications().add(this);
     }
+
 }
 
 

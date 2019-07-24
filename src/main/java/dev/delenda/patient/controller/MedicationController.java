@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Set;
 
 
 @RestController
@@ -28,9 +27,8 @@ public class MedicationController {
     }
 
     @PostMapping("/{id}/medications")
-    public ResponseEntity<Patients> addNewMedsToPatient(@PathVariable Long id, @RequestBody Patients patient) {
-        return new ResponseEntity<Patients>(this.medService.patientDrugs(id, patient), HttpStatus.CREATED);
-
+    public ResponseEntity<Patients> addNewMedsToPatient(@PathVariable Long id, @RequestBody Medications meds) {
+        return new ResponseEntity<>(this.medService.patientDrugs(id, meds), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}/medications")

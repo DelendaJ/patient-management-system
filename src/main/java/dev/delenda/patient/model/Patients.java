@@ -1,8 +1,10 @@
 package dev.delenda.patient.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 
@@ -18,6 +20,8 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "patients")
+@EqualsAndHashCode(exclude="medications")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Patients {
 
     @Id
@@ -42,10 +46,8 @@ public class Patients {
     private Set<Medications> medications = new HashSet<>();
 
     public void addMedications(Medications meds) {
-        this.medications.add(meds);
-        if (meds.getPatient() != this) {
-            meds.setPatient(this);
-        }
+        medications.add(meds);
+        meds.setPatient(this);
     }
 
 
