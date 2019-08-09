@@ -36,10 +36,6 @@ public class MedicationController {
         return new ResponseEntity<>(this.patientService.getMedsByPatient(id), HttpStatus.OK);
     }
 
-
-//        return new ResponseEntity<>(medService.newMeds(medication), HttpStatus.CREATED);
-//    }
-
     @DeleteMapping("/{id}/medications/{med_id}")
     public ResponseEntity<Boolean> destroy(Long id) {
         return new ResponseEntity<>(medService.destroyMeds(id), HttpStatus.OK);
