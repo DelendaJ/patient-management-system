@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Patient} from "./patient";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PatientService {
-  private baseURL = 'http://localhost:8080/api/patients';
+  private baseURL = 'http://localhost:8090/api/patients';
 
 
 
@@ -25,6 +26,10 @@ export class PatientService {
     return this.http.post(`${this.baseURL}`, patient);
   }
 
+  postMedications(patient: Object): Observable<Object> {
+    return this.http.post(`${this.baseURL}`, patient)
+  }
+
   updatePatient(id: number, value: any): Observable<object> {
     return this.http.put(`${this.baseURL}/${id}`, value);
 
@@ -40,10 +45,6 @@ export class PatientService {
 
   createPatientMeds (patient: Object, id: number): Observable<Object> {
     return this.http.post(`${this.baseURL}/${id}/medications`, patient);
-  }
-
-  destroyPatientMeds (id: number): Observable<any> {
-    return this.http.delete(`${this.baseURL}/${id}/medications/{id}`, {responseType: "text"});
   }
 
 }

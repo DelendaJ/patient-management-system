@@ -29,29 +29,6 @@ export class PatientDetailsComponent implements OnInit {
         console.log(data);
         this.patient = data;
       }, error => console.log(error));
-
-    this.patientService.getPatientMeds(this.id)
-      .subscribe(data => {
-        console.log(data);
-        if (data instanceof Patient) {
-          this.patient = data;
-        }
-      },error => console.log(error));
-  }
-
-
-
-/*  editPatient() {
-    this.patientService.updatePatient(this.id, this.patient)
-      .subscribe(data => console.log(data), error => console.log(error));
-    this.patientdeets();
-  }*/
-
-
-  save(): void {
-    this.patientService.updatePatient(this.id, this.patient)
-      .subscribe(() => this.list());
-    console.log('test', this.patient);
   }
 
 

@@ -1,6 +1,5 @@
-package dev.delenda.patient.model;
+package dev.delenda.patient.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,7 +11,6 @@ import javax.persistence.*;
 
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Data

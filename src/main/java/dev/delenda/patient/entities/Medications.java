@@ -1,4 +1,4 @@
-package dev.delenda.patient.model;
+package dev.delenda.patient.entities;
 
 
 import javax.persistence.*;
@@ -28,18 +28,16 @@ public class Medications {
     @Column(name = "date_prescribed")
     private String datePrescribed;
 
-
     @ManyToOne
     @JsonIgnore
     private Patients patient;
 
-public void setPatient(Patients pat) {
-    this.patient = pat;
-    if (!pat.getMedications().contains(this)) {
-        pat.getMedications().add(this);
+    public void setPatient(Patients pat) {
+        this.patient = pat;
+        if (!pat.getMedications().contains(this)) {
+            pat.getMedications().add(this);
+        }
+
     }
-
-}
-
 
 }

@@ -24,14 +24,6 @@ export class CreatePatientComponent implements OnInit {
   }
 
 
-/*
-  savePatientMeds() {
-    this.patientService.createPatientMeds(this.patient)
-      .subscribe(data => console.log(data), error => console.log(error));
-    this.patient = new Patient()
-  }
-*/
-
   savePatient() {
     this.patientService.createPatient(this.patient)
       .subscribe(data => console.log(data), error => console.log(error));
@@ -44,7 +36,7 @@ export class CreatePatientComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.savePatient();
-    // this.savePatientMeds()
+
   }
 
   gotoList() {

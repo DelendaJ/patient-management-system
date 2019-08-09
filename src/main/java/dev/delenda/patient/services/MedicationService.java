@@ -1,28 +1,24 @@
 package dev.delenda.patient.services;
 
-import dev.delenda.patient.model.Medications;
-import dev.delenda.patient.model.Patients;
+import dev.delenda.patient.entities.Medications;
+import dev.delenda.patient.entities.Patients;
 import dev.delenda.patient.repositories.MedsRepo;
 import dev.delenda.patient.repositories.PatientRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import java.util.Set;
-
-
 @Service
 public class MedicationService {
 
-    @Autowired
+
     private MedsRepo medsRepo;
-    @Autowired
     private PatientRepo patientRepo;
 
-
-    public MedicationService(MedsRepo medsRepo) {
+    @Autowired
+    public MedicationService(MedsRepo medsRepo, PatientRepo patientRepo) {
         this.medsRepo = medsRepo;
-
+        this.patientRepo = patientRepo;
     }
 
     public Patients patientDrugs(Long id, Medications meds) {
@@ -37,9 +33,6 @@ public class MedicationService {
         return true;
     }
 
- //   private Set<Medications> saveMeds(Medications meds, Long id) {
-   //     return null;
-
-    }
+}
 
 

@@ -34,16 +34,6 @@ export class PatientListComponent implements OnInit {
         error => console.log(error))
   }
 
-  destroyPatientMeds(id: number) {
-    this.patientService.destroyPatientMeds(id)
-      .subscribe(
-        data => {
-          console.log(data);
-          this.reloadData();
-        },
-        error => console.log(error))
-  }
-
   patientDetails(id: number) {
     this.router.navigate(['details', id])
   }
