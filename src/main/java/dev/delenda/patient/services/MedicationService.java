@@ -14,12 +14,11 @@ import java.util.Set;
 @Service
 public class MedicationService {
 
-    @Autowired
+   
     private MedsRepo medsRepo;
-    @Autowired
     private PatientRepo patientRepo;
 
-
+ @Autowired
     public MedicationService(MedsRepo medsRepo) {
         this.medsRepo = medsRepo;
 
