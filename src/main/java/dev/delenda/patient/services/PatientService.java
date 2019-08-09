@@ -1,8 +1,8 @@
 package dev.delenda.patient.services;
 
 
-import dev.delenda.patient.model.Medications;
-import dev.delenda.patient.model.Patients;
+import dev.delenda.patient.entities.Medications;
+import dev.delenda.patient.entities.Patients;
 import dev.delenda.patient.repositories.PatientRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +37,6 @@ public class PatientService {
         patients.setAddress(updatePatient.getAddress());
         patients.setPhoneNumber(updatePatient.getPhoneNumber());
         patients.setSocialSecurity(updatePatient.getSocialSecurity());
-        //patients.setMedications(updatePatient.getMedications());
         patientRepo.save(patients);
         return patients;
     }
