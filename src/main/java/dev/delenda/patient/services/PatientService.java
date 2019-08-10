@@ -37,7 +37,6 @@ public class PatientService {
         patients.setAddress(updatePatient.getAddress());
         patients.setPhoneNumber(updatePatient.getPhoneNumber());
         patients.setSocialSecurity(updatePatient.getSocialSecurity());
-        //patients.setMedications(updatePatient.getMedications());
         patientRepo.save(patients);
         return patients;
     }
