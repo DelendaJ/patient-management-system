@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 
 @RestController
 @RequestMapping("/api/patients")
@@ -26,12 +28,12 @@ public class MedicationController {
     }
 
     @PostMapping("/{id}/medications")
-    public ResponseEntity<Patients> addNewMedsToPatient(@PathVariable Long id, @RequestBody Medications meds) {
+    public ResponseEntity<Patients> addNewMedsToPatient(@PathVariable UUID id, @RequestBody Medications meds) {
         return new ResponseEntity<>(this.medService.patientDrugs(id, meds), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}/medications")
-    public ResponseEntity<Iterable<Medications>> getPatientMeds(@PathVariable Long id, @RequestBody Medications medications) {
+    public ResponseEntity<Iterable<Medications>> getPatientMeds(@PathVariable UUID id, @RequestBody Medications medications) {
         return new ResponseEntity<>(this.patientService.getMedsByPatient(id), HttpStatus.OK);
     }
 

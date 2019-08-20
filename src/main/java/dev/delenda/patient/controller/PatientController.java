@@ -1,11 +1,14 @@
 package dev.delenda.patient.controller;
 
 import dev.delenda.patient.entities.Patients;
+import dev.delenda.patient.requestobject.PatientRequest;
 import dev.delenda.patient.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @CrossOrigin
@@ -27,22 +30,22 @@ public class PatientController {
     }
 
     @GetMapping("/patients/{id}")
-    public ResponseEntity<Patients> getPatient(@PathVariable Long id) {
+    public ResponseEntity<Patients> getPatient(@PathVariable UUID id) {
         return new ResponseEntity<>(patientService.getPatient(id), HttpStatus.OK);
     }
 
     @PostMapping("/patients")
-    public ResponseEntity<Patients> newPatient(@RequestBody Patients patients) {
+    public ResponseEntity<Patients> newPatient(@RequestBody PatientRequest patients) {
         return new ResponseEntity<>(patientService.newPatient(patients), HttpStatus.CREATED);
     }
 
     @PutMapping("/patients/{id}")
-    public ResponseEntity<Patients> updatePatient(@PathVariable Long id, @RequestBody Patients patient) {
+    public ResponseEntity<Patients> updatePatient(@PathVariable UUID id, @RequestBody PatientRequest patient) {
         return new ResponseEntity<>(patientService.updatePatient(id, patient), HttpStatus.OK);
     }
 
     @DeleteMapping("/patients/{id}")
-    public ResponseEntity<Boolean> destroyPatient(@PathVariable Long id) {
+    public ResponseEntity<Boolean> destroyPatient(@PathVariable UUID id) {
         return new ResponseEntity<>(patientService.destroy(id), HttpStatus.OK);
     }
 }

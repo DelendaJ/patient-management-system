@@ -7,6 +7,8 @@ import dev.delenda.patient.repositories.PatientRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 
 @Service
 public class MedicationService {
@@ -21,7 +23,7 @@ public class MedicationService {
         this.patientRepo = patientRepo;
     }
 
-    public Patients patientDrugs(Long id, Medications meds) {
+    public Patients patientDrugs(UUID id, Medications meds) {
         Patients patient = patientRepo.findById(id).get();
         patient.addMedications(meds);
         patientRepo.save(patient);

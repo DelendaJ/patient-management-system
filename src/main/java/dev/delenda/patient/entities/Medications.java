@@ -34,10 +34,7 @@ public class Medications {
 
     public void setPatient(Patients pat) {
         this.patient = pat;
-        if (!pat.getMedications().contains(this)) {
-            pat.getMedications().add(this);
-        }
+        pat.getMedications().add(this);
 
     }
-
 }
