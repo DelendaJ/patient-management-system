@@ -9,6 +9,7 @@ import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
 import java.util.UUID;
 
 
@@ -40,6 +41,8 @@ public class PatientService {
         String phoneNumber = patient.getPhoneNumber();
         String socialSecurity = patient.getSocialSecurity();
         LocalDate dateOfBirth = patient.getDateOfBirth();
+        Set<Medications> meds = patient.getMedications();
+
 
         newPatient.setFirstName(firstName);
         newPatient.setLastName(lastName);
@@ -48,6 +51,7 @@ public class PatientService {
         newPatient.setPhoneNumber(phoneNumber);
         newPatient.setSocialSecurity(socialSecurity);
         newPatient.setDateOfBirth(dateOfBirth);
+        newPatient.setMedications(meds);
         return patientRepo.save(newPatient);
 
     }
@@ -60,6 +64,7 @@ public class PatientService {
         String address = patient.getAddress();
         String phoneNumber = patient.getPhoneNumber();
         String socialSecurity = patient.getSocialSecurity();
+        Set<Medications> meds = patient.getMedications();
 
         currentPatient.setFirstName(firstName);
         currentPatient.setLastName(lastName);
@@ -67,6 +72,7 @@ public class PatientService {
         currentPatient.setAddress(address);
         currentPatient.setPhoneNumber(phoneNumber);
         currentPatient.setSocialSecurity(socialSecurity);
+        currentPatient.setMedications(meds);
         return patientRepo.save(currentPatient);
     }
 
@@ -75,7 +81,7 @@ public class PatientService {
         return true;
     }
 
-    public Iterable<Medications> getMedsByPatient(UUID id) {
+    public Set<Medications> getMedsByPatient(UUID id) {
         if (!patientRepo.findById(id).isPresent()) {
             return null;
         }

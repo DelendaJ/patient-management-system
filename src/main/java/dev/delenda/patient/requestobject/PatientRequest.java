@@ -1,11 +1,14 @@
 package dev.delenda.patient.requestobject;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import dev.delenda.patient.entities.Medications;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.joda.time.LocalDate;
 import org.joda.time.Years;
 
+import javax.persistence.Entity;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -21,7 +24,7 @@ public class PatientRequest {
     private String address;
     private String phoneNumber;
     private String socialSecurity;
-
+    private Set<Medications> medications;
 
     public int getPatientAge() {
         LocalDate now = LocalDate.now();
@@ -29,5 +32,6 @@ public class PatientRequest {
         return age.getYears();
 
     }
+
 }
 

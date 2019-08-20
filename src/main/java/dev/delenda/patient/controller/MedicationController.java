@@ -33,7 +33,7 @@ public class MedicationController {
     }
 
     @GetMapping("/{id}/medications")
-    public ResponseEntity<Iterable<Medications>> getPatientMeds(@PathVariable UUID id, @RequestBody Medications medications) {
+    public ResponseEntity<Iterable<Medications>> getPatientMeds(@PathVariable UUID id, @RequestBody Medications meds) {
         return new ResponseEntity<>(this.patientService.getMedsByPatient(id), HttpStatus.OK);
     }
 

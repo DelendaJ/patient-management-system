@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Repository
 public interface PatientRepo extends JpaRepository<Patients, UUID> {
-    //Optional<Patients> findByName(String name);
+
 
 
 }

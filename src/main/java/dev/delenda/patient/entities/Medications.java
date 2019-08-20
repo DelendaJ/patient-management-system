@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.joda.time.LocalDate;
 
 
 @Data
@@ -26,15 +27,14 @@ public class Medications {
     @Column(name = "medication_name")
     private String medicationName;
     @Column(name = "date_prescribed")
-    private String datePrescribed;
+    private LocalDate datePrescribed;
 
     @ManyToOne
     @JsonIgnore
     private Patients patient;
 
-    public void setPatient(Patients pat) {
-        this.patient = pat;
-        pat.getMedications().add(this);
-
+    public void setPatient(Patients patients) {
+        patients.getMedications().add(this);
     }
+
 }

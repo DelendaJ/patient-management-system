@@ -6,16 +6,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
-import org.joda.time.Years;
 
 
 import javax.persistence.*;
-
-
-import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -46,18 +40,13 @@ public class Patients {
     private String phoneNumber;
     @Column(name = "social_security")
     private String socialSecurity;
-
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "pat_id", referencedColumnName = "pat_id")
-    private Set<Medications> medications = new HashSet<>();
+    private Set<Medications> medications;
 
 
     public void addMedications(Medications meds) {
         medications.add(meds);
         meds.setPatient(this);
     }
-
-
 }
-
