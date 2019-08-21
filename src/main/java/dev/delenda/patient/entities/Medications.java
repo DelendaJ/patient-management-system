@@ -9,14 +9,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.joda.time.LocalDate;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "medications")
 
-public class Medications {
+public class Medications  {
 
 
     @Id

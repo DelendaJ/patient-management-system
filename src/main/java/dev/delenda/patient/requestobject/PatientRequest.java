@@ -7,7 +7,7 @@ import lombok.Data;
 import org.joda.time.LocalDate;
 import org.joda.time.Years;
 
-import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 import java.util.UUID;
 
@@ -18,7 +18,6 @@ public class PatientRequest {
     private UUID id;
     private String firstName;
     private String lastName;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "EST")
     private LocalDate dateOfBirth;
     private int age;
     private String address;

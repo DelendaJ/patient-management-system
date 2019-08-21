@@ -1,9 +1,7 @@
 package dev.delenda.patient.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.joda.time.LocalDate;
@@ -18,8 +16,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Table(name = "patients")
-@EqualsAndHashCode(exclude = "medications")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
 public class Patients {
 
     @Id
