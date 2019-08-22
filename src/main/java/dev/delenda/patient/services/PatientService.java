@@ -1,8 +1,8 @@
 package dev.delenda.patient.services;
 
 
-import dev.delenda.patient.entities.Medications;
-import dev.delenda.patient.entities.Patients;
+import dev.delenda.patient.entities.Medication;
+import dev.delenda.patient.entities.Patient;
 import dev.delenda.patient.repositories.PatientRepo;
 import dev.delenda.patient.requestobject.PatientRequest;
 import org.joda.time.LocalDate;
@@ -24,21 +24,21 @@ public class PatientService {
         this.patientRepo = patientRepo;
     }
 
-    public Iterable<Patients> getAllPatients() {
+    public Iterable<Patient> getAllPatients() {
         return patientRepo.findAll();
     }
 
-    public Patients getPatient(UUID id) {
+    public Patient getPatient(UUID id) {
         return patientRepo.findById(id).get();
     }
 
-    public Patients newPatient(PatientRequest patient) {
-        Patients newPatient = new Patients();
+    public Patient newPatient(PatientRequest patient) {
+        Patient newPatient = new Patient();
         String firstName = patient.getFirstName();
         String lastName = patient.getLastName();
         String socialSecurity = patient.getSocialSecurity();
         LocalDate dateOfBirth = patient.getDateOfBirth();
-        Set<Medications> meds = patient.getMedications();
+        Set<Medication> meds = patient.getMedications();
 
         newPatient.setFirstName(firstName);
         newPatient.setLastName(lastName);
@@ -49,12 +49,12 @@ public class PatientService {
 
     }
 
-    public Patients updatePatient(UUID id, PatientRequest patient) {
-        Patients currentPatient = patientRepo.findById(id).get();
+    public Patient updatePatient(UUID id, PatientRequest patient) {
+        Patient currentPatient = patientRepo.findById(id).get();
         String firstName = patient.getFirstName();
         String lastName = patient.getLastName();
         String socialSecurity = patient.getSocialSecurity();
-        Set<Medications> meds = patient.getMedications();
+        Set<Medication> meds = patient.getMedications();
 
         currentPatient.setFirstName(firstName);
         currentPatient.setLastName(lastName);
@@ -68,7 +68,7 @@ public class PatientService {
         return true;
     }
 
-    public Set<Medications> getMedsByPatient(UUID id) {
+    public Set<Medication> getMedsByPatient(UUID id) {
         if (!patientRepo.findById(id).isPresent()) {
             return null;
         }

@@ -17,7 +17,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "patients")
 
-public class Patients {
+public class Patient {
 
     @Id
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
@@ -34,10 +34,10 @@ public class Patients {
     private String socialSecurity;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "pat_id", referencedColumnName = "pat_id")
-    private Set<Medications> medications;
+    private Set<Medication> medications;
 
 
-    public void addMedications(Medications meds) {
+    public void addMedications(Medication meds) {
         medications.add(meds);
         meds.setPatient(this);
     }

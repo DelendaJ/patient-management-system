@@ -1,7 +1,7 @@
 package dev.delenda.patient.services;
 
-import dev.delenda.patient.entities.Medications;
-import dev.delenda.patient.entities.Patients;
+import dev.delenda.patient.entities.Medication;
+import dev.delenda.patient.entities.Patient;
 import dev.delenda.patient.repositories.MedsRepo;
 import dev.delenda.patient.repositories.PatientRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +23,8 @@ public class MedicationService {
         this.patientRepo = patientRepo;
     }
 
-    public Patients patientDrugs(UUID id, Medications meds) {
-        Patients patient = patientRepo.findById(id).get();
+    public Patient patientDrugs(UUID id, Medication meds) {
+        Patient patient = patientRepo.findById(id).get();
         patient.addMedications(meds);
         patientRepo.save(patient);
         return patient;

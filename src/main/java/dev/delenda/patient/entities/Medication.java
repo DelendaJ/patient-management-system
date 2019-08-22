@@ -15,7 +15,7 @@ import org.joda.time.LocalDate;
 @Entity
 @Table(name = "medications")
 
-public class Medications  {
+public class Medication {
 
 
     @Id
@@ -30,9 +30,9 @@ public class Medications  {
 
     @ManyToOne
     @JsonIgnore
-    private Patients patient;
+    private Patient patient;
 
-    public void setPatient(Patients patients) {
+    public void setPatient(Patient patients) {
         patients.getMedications().add(this);
     }
 

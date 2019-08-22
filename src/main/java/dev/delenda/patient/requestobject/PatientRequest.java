@@ -1,6 +1,6 @@
 package dev.delenda.patient.requestobject;
 
-import dev.delenda.patient.entities.Medications;
+import dev.delenda.patient.entities.Medication;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.joda.time.LocalDate;
@@ -18,7 +18,7 @@ public class PatientRequest {
     private String address;
     private String phoneNumber;
     private String socialSecurity;
-    private Set<Medications> medications;
+    private Set<Medication> medications;
 
 
 }
