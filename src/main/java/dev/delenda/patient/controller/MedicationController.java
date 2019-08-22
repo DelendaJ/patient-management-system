@@ -1,7 +1,7 @@
 package dev.delenda.patient.controller;
 
-import dev.delenda.patient.entities.Medications;
-import dev.delenda.patient.entities.Patients;
+import dev.delenda.patient.entities.Medication;
+import dev.delenda.patient.entities.Patient;
 import dev.delenda.patient.services.MedicationService;
 import dev.delenda.patient.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +28,12 @@ public class MedicationController {
     }
 
     @PostMapping("/{id}/medications")
-    public ResponseEntity<Patients> addNewMedsToPatient(@PathVariable UUID id, @RequestBody Medications meds) {
+    public ResponseEntity<Patient> addNewMedsToPatient(@PathVariable UUID id, @RequestBody Medication meds) {
         return new ResponseEntity<>(this.medService.patientDrugs(id, meds), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}/medications")
-    public ResponseEntity<Iterable<Medications>> getPatientMeds(@PathVariable UUID id, @RequestBody Medications meds) {
+    public ResponseEntity<Iterable<Medication>> getPatientMeds(@PathVariable UUID id, @RequestBody Medication meds) {
         return new ResponseEntity<>(this.patientService.getMedsByPatient(id), HttpStatus.OK);
     }
 
