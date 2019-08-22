@@ -36,19 +36,12 @@ public class PatientService {
         Patients newPatient = new Patients();
         String firstName = patient.getFirstName();
         String lastName = patient.getLastName();
-        int age = patient.getPatientAge();
-        String address = patient.getAddress();
-        String phoneNumber = patient.getPhoneNumber();
         String socialSecurity = patient.getSocialSecurity();
         LocalDate dateOfBirth = patient.getDateOfBirth();
         Set<Medications> meds = patient.getMedications();
 
-
         newPatient.setFirstName(firstName);
         newPatient.setLastName(lastName);
-        newPatient.setAge(age);
-        newPatient.setAddress(address);
-        newPatient.setPhoneNumber(phoneNumber);
         newPatient.setSocialSecurity(socialSecurity);
         newPatient.setDateOfBirth(dateOfBirth);
         newPatient.setMedications(meds);
@@ -60,17 +53,11 @@ public class PatientService {
         Patients currentPatient = patientRepo.findById(id).get();
         String firstName = patient.getFirstName();
         String lastName = patient.getLastName();
-        int age = patient.getPatientAge();
-        String address = patient.getAddress();
-        String phoneNumber = patient.getPhoneNumber();
         String socialSecurity = patient.getSocialSecurity();
         Set<Medications> meds = patient.getMedications();
 
         currentPatient.setFirstName(firstName);
         currentPatient.setLastName(lastName);
-        currentPatient.setAge(age);
-        currentPatient.setAddress(address);
-        currentPatient.setPhoneNumber(phoneNumber);
         currentPatient.setSocialSecurity(socialSecurity);
         currentPatient.setMedications(meds);
         return patientRepo.save(currentPatient);

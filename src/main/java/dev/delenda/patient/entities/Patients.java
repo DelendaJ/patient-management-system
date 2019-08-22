@@ -30,11 +30,6 @@ public class Patients {
     private String lastName;
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
-    private int age;
-    @Column(name = "address")
-    private String address;
-    @Column(name = "phone_number")
-    private String phoneNumber;
     @Column(name = "social_security")
     private String socialSecurity;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
